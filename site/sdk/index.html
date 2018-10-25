@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Zhunag ShaoBo">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>策略SDK - PowerGate</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7b56\u7565SDK";
+    var mkdocs_page_input_path = "sdk.md";
+    var mkdocs_page_url = "/sdk/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-510626-7', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> PowerGate</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">简介</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../quickstart/">快速开始</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../concept/">重要概念</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../terminal/">网关程序</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">更多例子</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">策略SDK</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">数据结构</a></li>
+                
+                    <li><a class="toctree-l4" href="#resolution">&emsp;Resolution</a></li>
+                
+                    <li><a class="toctree-l4" href="#exchangecode">&emsp;ExchangeCode</a></li>
+                
+                    <li><a class="toctree-l4" href="#securitytype">&emsp;SecurityType</a></li>
+                
+                    <li><a class="toctree-l4" href="#marketdata">&emsp;MarketData</a></li>
+                
+                    <li><a class="toctree-l4" href="#timeinforce">&emsp;TimeInforce</a></li>
+                
+                    <li><a class="toctree-l4" href="#order">&emsp;Order</a></li>
+                
+                    <li><a class="toctree-l4" href="#execution">&emsp;Execution</a></li>
+                
+                    <li><a class="toctree-l4" href="#orderaction">&emsp;OrderAction</a></li>
+                
+                    <li><a class="toctree-l4" href="#orderstate">&emsp;OrderState</a></li>
+                
+                    <li><a class="toctree-l4" href="#ordertype">&emsp;OrderType</a></li>
+                
+                    <li><a class="toctree-l4" href="#accountdetails">&emsp;AccountDetails</a></li>
+                
+                    <li><a class="toctree-l4" href="#securitydefinition">&emsp;SecurityDefinition</a></li>
+                
+                    <li><a class="toctree-l4" href="#positiondate">&emsp;PositionDate</a></li>
+                
+                    <li><a class="toctree-l4" href="#positionside">&emsp;PositionSide</a></li>
+                
+                    <li><a class="toctree-l4" href="#accountposition">&emsp;AccountPosition</a></li>
+                
+                    <li><a class="toctree-l4" href="#strategyposition">&emsp;StrategyPosition</a></li>
+                
+                    <li><a class="toctree-l4" href="#strategyparamtype">&emsp;StrategyParamType</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#strategybase">StrategyBase</a></li>
+                
+                    <li><a class="toctree-l4" href="#api">&emsp;行情API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_1">&emsp;交易API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_2">&emsp;持仓API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_3">&emsp;其它API</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">&emsp;回调接口</a></li>
+                
+                    <li><a class="toctree-l4" href="#_3">&emsp;运行接口</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#strategyconfig">StrategyConfig</a></li>
+                
+                    <li><a class="toctree-l4" href="#_4">&emsp;设置接口</a></li>
+                
+                    <li><a class="toctree-l4" href="#_5">&emsp;行情订阅</a></li>
+                
+                    <li><a class="toctree-l4" href="#_6">&emsp;参数设置</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">PowerGate</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>策略SDK</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>策略SDK下载地址：  </p>
+<ul>
+<li>C++ SDK</li>
+<li><a href="https://sourceforge.net/projects/powergate-sdk-python/files/latest/download">Python SDK</a></li>
+<li>Java SDK</li>
+<li>C# SDK</li>
+<li>R SDK</li>
+<li>Matlab SDK</li>
+</ul>
+<h2 id="_1">数据结构</h2>
+<h3 id="resolution">&emsp;Resolution</h3>
+<p>行情周期</p>
+<pre><code>TICK   = 0,                 
+SECOND = 1,                
+MINUTE = 60,                
+HOUR   = 60 * 60,          
+DAY    = 24 * 60 * 60,     
+WEEK   = 24 * 60 * 60 * 7
+</code></pre>
+<h3 id="exchangecode">&emsp;ExchangeCode</h3>
+<p>交易所代码  </p>
+<pre><code>EXCHG_UNKNOWN = 0x00,
+EXCHG_SSE     = 0x0001,
+EXCHG_SZE     = 0x0002,
+EXCHG_SHFE    = 0x0004,
+EXCHG_DCE     = 0x0008,
+EXCHG_CZCE    = 0x0010,
+EXCHG_CFFEX   = 0x0020,
+EXCHG_GOLD    = 0x0040
+</code></pre>
+<h3 id="securitytype">&emsp;SecurityType</h3>
+<p>证券类型</p>
+<pre><code>UNKNOWN = 0,
+STOCK,
+FUTURE,
+FOREX,
+OPTION
+</code></pre>
+<h3 id="marketdata">&emsp;MarketData</h3>
+<p>行情数据</p>
+<pre><code>char      type;
+char      securityType;
+char      instrument[LEN_INSTRUMENT];
+char      exchange[LEN_EXCHANGE];
+int       date;     // YYYYMMDD
+int       time;     // hhmmss
+int       millis;
+int       resolution;
+int       interval;
+double    lastPrice;
+double    openPrice;
+double    highestPrice;
+double    lowestPrice;
+double    closePrice;
+double    volume;
+long long openInterest;
+double    turnover;
+double    upperLimitPrice;
+double    lowerLimitPrice;
+double    preSettlePrice;
+double    preClosePrice;
+double    settlePrice;
+int       preOpenInterest;
+double    averagePrice;
+int       depth;
+
+double    bidPrice1;
+int       bidVolume1;
+double    bidPrice2;
+int       bidVolume2;
+double    bidPrice3;
+int       bidVolume3;
+double    bidPrice4;
+int       bidVolume4;
+double    bidPrice5;
+int       bidVolume5;
+
+double    askPrice1;
+int       askVolume1;
+double    askPrice2;
+int       askVolume2;
+double    askPrice3;
+int       askVolume3;
+double    askPrice4;
+int       askVolume4;
+double    askPrice5;
+int       askVolume5;
+</code></pre>
+<h3 id="timeinforce">&emsp;TimeInforce</h3>
+<p>订单时效  </p>
+<pre><code>DAY = 0,
+GTC,
+OPG,
+IOC,
+FOK,
+GTX,
+GTD,
+</code></pre>
+<h3 id="order">&emsp;Order</h3>
+<p>订单</p>
+<pre><code>// Buy side's original client order ID, uniqueness must be guaranteed within a single trading day.
+char          clOrdId[LEN_ID];
+// Sell side's reference for this order.
+char          ordId[LEN_ID];
+char          instrument[LEN_INSTRUMENT];
+int           exchange;
+int           type;
+int           action;
+int           timeInforce;
+bool          allOrNone;
+int           status;
+double        quantity;
+double        price;
+double        stopPx;
+double        tradedQty;
+double        avgTradedPx;
+double        lastTradedQty;
+double        lastTradedPx;
+long          date;
+long          time;
+double        commissions;
+char          stateMsg[LEN_STATE_MSG];
+bool          closeAction;          // Distinguish three closing actions.
+int           compId;               // Component who submit this order.
+int           ownerId;              // Strategy who submit this order.
+int           srvId;
+</code></pre>
+<h3 id="execution">&emsp;Execution</h3>
+<p>成交信息</p>
+<pre><code>char          instrument[LEN_INSTRUMENT];
+int           type;
+int           action;
+int           date;       // YYYYMMDD
+int           time;       // hhmmss
+int           millis;
+double        quantity;
+double        price;
+bool          closeAction;
+
+char          clOrdId[LEN_ID];
+char          ordId[LEN_ID];
+char          execId[LEN_ID];
+int           srvId;
+</code></pre>
+<h3 id="orderaction">&emsp;OrderAction</h3>
+<p>报单方向</p>
+<pre><code>BUY          = 1,
+BUY_TO_COVER = 2,
+SELL         = 3,
+SELL_SHORT   = 4,
+</code></pre>
+<h3 id="orderstate">&emsp;OrderState</h3>
+<p>订单状态</p>
+<pre><code>UNKNOWN = 0,
+INITIAL,           // Initial state.
+PENDING_NEW,
+SUBMITTED,         // Order has been submitted.
+ACCEPTED,          // Order has been acknowledged by the broker.
+PENDING_CANCEL,
+CANCELED,          // Order has been canceled.
+PARTIALLY_FILLED,  // Order has been partially filled.
+FILLED,            // Order has been completely filled.
+REJECTED           // Order has been rejected.
+</code></pre>
+<h3 id="ordertype">&emsp;OrderType</h3>
+<p>订单类型</p>
+<pre><code>MARKET     = 1,
+LIMIT      = 2,
+STOP       = 3,
+STOP_LIMIT = 4,
+</code></pre>
+<h3 id="accountdetails">&emsp;AccountDetails</h3>
+<p>账户信息</p>
+<pre><code>char   userCode[32];
+char   password[32];
+char   userName[64];
+char   currency[8];
+double preBalance;
+double preDeposit;
+double margin;
+double lastFund;
+double currMargin;
+double deposit;
+double withdraw;
+double equity;
+double availFunds;
+double buyFreeze;
+double sellFreeze;
+double buyBond;
+double sellBond;
+double realizedPnL;
+double unrealizedPnL;
+double totalBond;
+double totalExBond;
+double todayReleaseFund;
+double comFreeze;
+double commission;
+double otherFreeze;
+double totalFreeze;
+double riskLevel;
+</code></pre>
+<h3 id="securitydefinition">&emsp;SecurityDefinition</h3>
+<p>合约定义</p>
+<pre><code>char   instrument[LEN_INSTRUMENT];
+char   name[32];
+int    exchgCode;
+double upPrice;
+double lowPrice;
+double moneyRate;
+double longMarginRatio;
+double shortMarginRatio;
+double multiplier;
+char   mktdate1[20];
+char   mktdate2[20];
+double tickSize;
+double upDealNum;
+double lowDealNum;
+int    isTrading;
+</code></pre>
+<h3 id="positiondate">&emsp;PositionDate</h3>
+<p>仓位日期</p>
+<pre><code>POSITION_DATE_TODAY,
+POSITION_DATE_HISTORY,
+POSITION_DATE_ALL,
+</code></pre>
+<h3 id="positionside">&emsp;PositionSide</h3>
+<p>仓位方向</p>
+<pre><code>POSITION_SIDE_LONG  = 'L',
+POSITION_SIDE_SHORT = 'S'
+</code></pre>
+<h3 id="accountposition">&emsp;AccountPosition</h3>
+<p>账户持仓</p>
+<pre><code>char   instrument[LEN_INSTRUMENT];
+char   side;
+char   buysell;
+char   dateMark;
+double cumQty;
+double todayQty;
+double histQty;
+double frozen;
+double preSettlmntPx;
+double cost;
+double avgPx;
+double unrealizedPnL;
+double realizedPnL;
+double margin;
+int    date;
+int    time;
+int    millis;
+double histHighestPx;
+double histLowestPx;
+char   accountId[LEN_ID];
+</code></pre>
+<h3 id="strategyposition">&emsp;StrategyPosition</h3>
+<p>策略持仓</p>
+<pre><code>int    strategyId;
+char   instrument[LEN_INSTRUMENT];
+int    side;
+double quantity;
+double frozen;
+double unformed;
+double avgPx;
+double margin;
+double unrealizedPnL;
+double realizedPnL;
+int    date;
+int    time;
+int    millis;
+double highestPx;
+double lowestPx;
+</code></pre>
+<h3 id="strategyparamtype">&emsp;StrategyParamType</h3>
+<p>策略参数类型</p>
+<pre><code>PARAM_TYPE_BOOL,
+PARAM_TYPE_INT,
+PARAM_TYPE_FLOAT,
+PARAM_TYPE_STRING,
+</code></pre>
+<h2 id="strategybase">StrategyBase</h2>
+<h3 id="api">&emsp;行情API</h3>
+<pre><code>const char* getMainInstrument() const;
+BarSeries*  getTickSeries(const char* instrument = "");
+BarSeries*  getBarSeries(const char* instrument = "", int resolution = Resolution::MINUTE, int interval = 1);
+// 订阅行情
+bool   subscribe(const char* instrument, int resolution = Resolution::TICK, int interval = 1, int srvId = 0);
+// 取消订阅
+bool   unsubscribe(const char* instrument, int resolution = Resolution::TICK, int interval = 1, int srvId = 0);
+// 获取合约乘数
+double getMultiplier(const char* instrument = "");
+// 获取合约最小跳
+double getTickSize(const char* instrument = "");
+// 获取合约最新价
+double getLastPrice(const char* instrument = "");
+// 获取合约卖一价
+double getAskPrice(const char* instrument = "");
+// 获取合约买一价
+double getBidPrice(const char* instrument = "");
+</code></pre>
+<h3 id="api_1">&emsp;交易API</h3>
+<pre><code>bool   openLong(const char* instrument, double quantity, char* clOrdId);
+bool   closeLong(const char* instrument, char* clOrdId);
+bool   openShort(const char* instrument, double quantity, char* clOrdId);
+bool   closeShort(const char* instrument, char* clOrdId);
+
+bool   buy(const char* instrument, double quantity, double price, char* clOrdId, int srvId = 0);
+bool   sell(const char* instrument, double quantity, double price, char* clOrdId, int srvId = 0);
+bool   sellShort(const char* instrument, double quantity, double price, char* clOrdId, int srvId = 0);
+bool   buyToCover(const char* instrument, double quantity, double price, char* clOrdId, int srvId = 0);
+
+bool   submitOrder(Order&amp; order);
+int    getOrderStatus(const char* _clOrdId);
+Order  getOrderSnapshot(const char* _clOrdId);
+int    getPendingOrders(OrderList&amp; list, const char* instrument = "");
+bool   cancelOrder(const char* _clOrdId);
+bool   cancelOrder(const Order&amp; order);
+bool   isOrderPending(const char* _clOrdId);
+</code></pre>
+<h3 id="api_2">&emsp;持仓API</h3>
+<pre><code>int    getAccountPositions(AccountPositionList&amp; list, const char* instrument = "");
+int    getStrategyPositions(StrategyPositionList&amp; list, const char* instrument = "");
+double getTotalPosSize(const char* instrument = "");
+
+double getLongPosSize(const char* instrument = "");
+void   getLongPosSize(double* closable, double* frozen, double* unformed);
+void   getLongPosSize(const char* instrument, double* closable, double* frozen, double* unformed);
+StrategyPosition getLongPos(const char* instrument = "");
+
+double getShortPosSize(const char* instrument = "");
+void   getShortPosSize(double* closable, double* frozen, double* unformed);
+void   getShortPosSize(const char* instrument, double* closable, double* frozen, double* unformed);
+StrategyPosition getShortPos(const char* instrument = "");
+
+double getClosableLongPosSize(const char* instrument = "");
+StrategyPosition getClosableLongPos(const char* instrument = "");
+
+double getClosableShortPosSize(const char* instrument = "");
+StrategyPosition getClosableShortPos(const char* instrument = "");
+
+double getAcctClosableLongPosSize(const char* instrument = "", int srvId = 0);
+
+double getAcctClosableShortPosSize(const char* instrument = "", int srvId = 0);
+
+double getAcctLongPosSize(const char* instrument = "", int srvId = 0);
+double getAcctHistLongPosSize(const char* instrument = "", int srvId = 0);
+double getAcctLongPos(const char* instrument, double* price, int* date, int* time, int srvId = 0);
+StrategyPosition getAcctLongPos(const char* instrument = "", int srvId = 0);
+
+double getAcctShortPosSize(const char* instrument = "", int srvId = 0);
+double getAcctHistShortPosSize(const char* instrument = "", int srvId = 0);
+double getAcctShortPos(const char* instrument, double* price, int* date, int* time, int srvId = 0);
+StrategyPosition getAcctShortPos(const char* instrument = "", int srvId = 0);
+
+bool assignLongPosition(const char* instrument, double size, double price, double frozen = 0,
+                        int date = 0, int time = 0, int ms = 0, 
+                        double highest = 0, double lowest = 0);
+bool assignShortPosition(const char* instrument, double size, double price, double frozen = 0,
+                         int date = 0, int time = 0, int ms = 0,
+                         double highest = 0, double lowest = 0);
+</code></pre>
+<h3 id="api_3">&emsp;其它API</h3>
+<pre><code>int         getId() const;
+int         getStatus() const;
+const char* getName() const;
+void   writeLogMsg(const char* msg);
+bool   isVerboseMsgEnabled() const;
+void   writeVerboseMsg(const char* msg);
+void   writeErrorMsg(const char* msg);
+</code></pre>
+<h3 id="_2">&emsp;回调接口</h3>
+<pre><code>virtual void onCreate() {}
+virtual void onSetParameter(const char* name, int type, const char* value, bool isLast) {}
+virtual int  onBarSeriesFeed(const char* instrument, int resolution, int interval, int num, MarketData* buffer) { return 0; }
+virtual void onStart() {}
+virtual void onTick(const MarketData&amp; data) {}
+virtual void onBar(const Bar&amp; bar) {}
+virtual void onOrderSubmitted(const Order&amp; order) {}
+virtual void onOrderUpdated(const Order&amp; order) {}
+virtual void onExecutionReport(const Execution&amp; exec) {}
+virtual void onOrderPartiallyFilled(const Order&amp; order) {}
+virtual void onOrderFilled(const Order&amp; order) {}
+virtual void onOrderRejected(const Order&amp; order) {}
+virtual void onOrderCancelled(const Order&amp; order) {}
+virtual void onOrderCancelRejected(const Order&amp; order) {}
+virtual void onCommand(const char* command) {}
+virtual void onTimer(int timerId) {}
+virtual void onHistoricalDataRequestAck(const HistoricalDataRequest&amp; request) {}
+virtual void onEnvVariable(const char* name, const char* value) {}
+virtual void onPause() {}
+virtual void onResume() {}
+virtual void onStop() {}
+virtual void onDestory() {}
+</code></pre>
+<h3 id="_3">&emsp;运行接口</h3>
+<pre><code>#define DEFAULT_SRV_ADDR        ("127.0.0.1")
+#define DEFAULT_SRV_PORT        (5501)
+
+bool run(const StrategyConfig&amp; config, const char* srvAddr = DEFAULT_SRV_ADDR, int srvPort = DEFAULT_SRV_PORT);
+void stop();
+</code></pre>
+<h2 id="strategyconfig">StrategyConfig</h2>
+<h3 id="_4">&emsp;设置接口</h3>
+<pre><code>void             setName(const char* name);
+const char*      getName() const;
+void             setDescription(const char* desc);
+const char*      getDescription() const;
+void             setAuthor(const char* author);
+const char*      getAuthor() const;
+void enableAlgoTrader();
+void disableAlgoTrader();
+</code></pre>
+<h3 id="_5">&emsp;行情订阅</h3>
+<pre><code>void subscribe(const char* instrument, int resolution = Resolution::TICK, int interval = 0);
+</code></pre>
+<h3 id="_6">&emsp;参数设置</h3>
+<pre><code>StrategyConfig&amp; setUserParameter(const char* name, int value);
+StrategyConfig&amp; setUserParameter(const char* name, double value);
+StrategyConfig&amp; setUserParameter(const char* name, bool value);
+StrategyConfig&amp; setUserParameter(const char* name, const char* value);
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../examples/" class="btn btn-neutral" title="更多例子"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../examples/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

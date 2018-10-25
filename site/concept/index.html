@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Zhunag ShaoBo">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>重要概念 - PowerGate</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u91cd\u8981\u6982\u5ff5";
+    var mkdocs_page_input_path = "concept.md";
+    var mkdocs_page_url = "/concept/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-510626-7', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> PowerGate</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">简介</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../quickstart/">快速开始</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">重要概念</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">运行模式</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_2">事件驱动</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_3">数据序列</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_4">策略持仓</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../terminal/">网关程序</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">更多例子</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sdk/">策略SDK</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">PowerGate</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>重要概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">运行模式</h2>
+<p>PowerGate支持以两种模式运行交易策略：<br />
+一是策略以动态链接库（.dll或.so）形式存在，PowerGate网关直接将其加载到进程内部。 </p>
+<pre><code>            +--------------------------+
+            |              +--------+  |
+            |              |Strategy|  |
+            |              +--------+  |
+            |              +--------+  |
+            | PowerGate    |Strategy|  |
+            |              +--------+  |
+            |              +--------+  |
+            |              |Strategy|  |
+            |              +--------+  |
+            +--------------------------+
+</code></pre>
+<p>二是策略以独立进程存在，PowerGate网关通过网络为策略提供运行环境，也就是典型的Client/Server模式。  </p>
+<pre><code>            +------------+
+            |            |          +--------+
+            |            |&lt;--------&gt;|Strategy|
+            |            |          +--------+
+            |            |          +--------+
+            | PowerGate  |&lt;--------&gt;|Strategy|
+            |            |          +--------+
+            |            |          +--------+
+            |            |&lt;--------&gt;|Strategy|
+            |            |          +--------+
+            +------------+
+</code></pre>
+<p>PowerGate默认以第二种模式运行。网关程序的默认监听端口为5501，用户可以通过登录界面的“设置”按钮修改监听端口。</p>
+<h2 id="_2">事件驱动</h2>
+<p>策略以“事件驱动”的方式运行。用户继承SDK提供的策略父类之后，根据需要实现相应的事件接口，当对应的事件发生时，策略的事件接口会被调用。<br />
+例如用户对Tick行情数据感兴趣，只要实现onTick()接口，当有Tick数据到来时，onTick()就会被调用。<br />
+用户可以在PowerGate的界面上控制策略的运行与停止，当策略启动或停止时，对应的回调函数也会被调用。<br />
+在事件驱动的模式下，一个交易策略的典型生命周期如下：  </p>
+<pre><code>    +-------+         +-----------+                                    +-----------+
+    | User  |         | PowerGate |                                    | Strategy  |
+    +-------+         +-----------+                                    +-----------+
+        |                   |                                                |
+        | 加载策略           |                                                |
+        |-----------------&gt;&gt;|                                                |
+        |                   |                                                |
+        |                   |                                    onCreate()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        | 启动策略           |                                                |
+        |-----------------&gt;&gt;|                                                |
+        |                   |                                                |
+        |                   |                              onSetParameter()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |                                     onStart()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |                                      onTick()  |  # 如果策略订阅了Tick
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |                                       onBar()  |  # 如果策略订阅了Bar
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |  buy()/sell()/sellShort()/cover()              |  # 策略发送报单
+        |                   |&lt;&lt;----------------------------------------------|
+        |                   |                                                |
+        |                   |                            onOrderSubmitted()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |            onOrderUpdated()/onOrderRejected()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |                           onExecutionReport()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |      onOrderPartiallyFilled()/onOrderFilled()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        | 停止策略           |                                                |
+        |-----------------&gt;&gt;|                                                |
+        |                   |                                                |
+        |                   |                                      onStop()  |
+        |                   |----------------------------------------------&gt;&gt;|
+        |                   |                                                |
+        |                   |                                    onDestory() |
+        |                   |-----------------------------------------------&gt;|
+        |                   |                                                |
+</code></pre>
+<h2 id="_3">数据序列</h2>
+<p>PowerGate为用户提供了一个有用的抽象：数据时间序列（DataSeries）。<br />
+例如，用户需要订阅某合约的一分钟数据，只要在策略配置中写：  </p>
+<pre><code>config.subscribe("ABC", Resolution.MINUTE, 1)
+</code></pre>
+<p>系统会为策略自动生成一个周期为1分钟的"ABC"合约的时间序列，这个序列会被自动填充。当有分钟数据生成时，序列的第0个数据就是最新数据。<br />
+这个时间序列能被用于各种运算，如：判断相互穿越，用于传递给技术指标如MA、EMA等。<br />
+例如，我们可以在一个数据序列上计算周期为10的SMA指标：  </p>
+<pre><code>from PowerGate import SMA
+sma = SMA()
+sma.init(series, 10)
+</code></pre>
+<p>当有新数据被填充进序列时，数据序列会自动触发指标进行计算。用户在初始化完指标之后，指标会自动接收数据计算最新值。</p>
+<h2 id="_4">策略持仓</h2>
+<p>PowerGate支持同时运行多个策略，不同于账户持仓，每个策略都有属于自己的持仓。<br />
+当策略开仓时，所开的仓位会被分配给这个策略。PowerGate网关记录每个策略的持仓数量，策略默认只能平掉属于自己的持仓。<br />
+用户可以在网关界面上或者在策略内部为策略分配持仓。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../terminal/" class="btn btn-neutral float-right" title="网关程序">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../quickstart/" class="btn btn-neutral" title="快速开始"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../quickstart/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../terminal/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿site_name: PowerGate
+site_url: http://algo.trade
+site_description: Algorithm makes trading intelligent
+site_author: Zhunag ShaoBo
+#repo_url: https://github.com/algo-trade/algogate.git
+google_analytics: ['UA-510626-7', 'auto']
+theme: readthedocs
+       
+pages:
+- ['index.md', '简介']
+- ['quickstart.md', '快速开始'] 
+- ['concept.md', '重要概念'] 
+- ['terminal.md', '网关程序'] 
+- ['examples.md', '更多例子'] 
+- ['sdk.md', '策略SDK'] 
